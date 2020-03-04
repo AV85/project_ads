@@ -1,0 +1,21 @@
+nav.navbar.navbar-expand-md.navbar-light.bg-light
+  .container
+    a.navbar-brand href="#"
+      img alt="CoolBrand" height="28" src="https://via.placeholder.com/150"
+    button.navbar-toggler data-target="#navbarCollapse" data-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse
+      .navbar-nav
+        a.nav-item.nav-link.active href="/"  Home
+        a.nav-item.nav-link href="#"  Link 1
+        a.nav-item.nav-link href="#"  Link 2
+      .navbar-nav.ml-auto
+        - if user_signed_in?
+          .nav-item.nav-link
+            | Hello, #{current_user.first_name} #{current_user.last_name}
+            | &nbsp;
+          = link_to 'Log out', destroy_user_session_path, :method => :delete, class: 'btn btn-danger'
+        - else
+          = link_to 'Sign In', new_user_session_path, class: 'btn btn-primary'
+          | &nbsp;
+          = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success'
