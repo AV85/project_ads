@@ -1,0 +1,8 @@
+.container.p-3.my-3.border
+  .form
+  = simple_form_for @category, input_html: { class: 'default_class' } do |f|
+    = f.error_notification
+    = f.input :name
+    = f.input :description
+    = f.input :icon
+    = f.button :submit, class: "btn-primary"

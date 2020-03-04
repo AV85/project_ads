@@ -1,16 +1,20 @@
-nav.navbar.navbar-expand-md.navbar-light.bg-light
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark
   .container
     a.navbar-brand href="#"
-      img alt="CoolBrand" height="28" src="https://via.placeholder.com/150"
+      | FREE ADS
     button.navbar-toggler data-target="#navbarCollapse" data-toggle="collapse" type="button"
       span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse
       .navbar-nav
-        a.nav-item.nav-link.active href="/"  Home
-        a.nav-item.nav-link href="#"  Link 1
-        a.nav-item.nav-link href="#"  Link 2
+        a.nav-item.nav-link.active href="/"
+          = fa_icon "home", text: 'Home'
+        - if user_signed_in?
+          = link_to 'ADS', ads_path, class: 'nav-item nav-link'
+          / a.nav-item.nav-link href="#"  Link 1
+          / a.nav-item.nav-link href="#"  Link 2
       .navbar-nav.ml-auto
         - if user_signed_in?
+          = link_to 'Create AD', new_ad_path, class: 'btn btn-warning'
           .nav-item.nav-link
             | Hello, #{current_user.first_name} #{current_user.last_name}
             | &nbsp;

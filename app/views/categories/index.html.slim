@@ -1,0 +1,22 @@
+.container
+  .container.p-3.my-3.border
+    .container
+      h1 Listing categories
+      table.table
+        tr
+          th Name
+          th Description
+          th Name icon of font awensome
+          th
+          th
+          th
+        - @categories.each do |category|
+          tr
+            td= category.name
+            td= category.description
+            td= category.icon
+            td= link_to 'Show', category_path(category)
+            td= link_to 'Edit', edit_category_path(category)
+            td= link_to 'Destroy', category_path(category), method: :delete, data: {confirm: 'Are you sure?'}
+      br
+      = link_to 'Create AD', new_ad_path, class: 'btn btn-warning'

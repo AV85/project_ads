@@ -1,0 +1,19 @@
+.container
+  h1 Listing Users
+  table.table.table-hover
+    tr
+      th Email
+      th First name
+      th Last name
+      th
+      th
+    - @users.each do |user|
+      tr
+        td= user.email
+        td= user.first_name
+        td= user.last_name
+        td= link_to 'Show', user_path(user)
+        td= link_to 'Edit', edit_user_path(user)
+        td= link_to 'Destroy', user_path(user), method: :delete, data: {confirm: 'Are you sure?'}
+  br
+  = link_to 'Create User', new_user_path, class: 'btn btn-warning'
