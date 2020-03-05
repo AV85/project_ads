@@ -31,7 +31,7 @@ class Cabinet::AdsController < ApplicationController
   def update
     respond_to do |format|
       if @ad.update(ad_params)
-        format.html { redirect_to cabinet_ad_path, notice: 'AD was successfully updated.' }
+        format.html { redirect_to cabinet_ads_path, notice: 'AD was successfully updated.' }
       else
         format.html { render :edit }
       end

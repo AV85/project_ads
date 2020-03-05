@@ -17,7 +17,7 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
       - if user_signed_in?
         .navbar-nav.ml-auto
         = link_to 'Create FREE AD', new_cabinet_ad_path, class: 'btn btn-warning', style: 'font-size: 22px'
-      .navbar-nav.ml-auto
+      .navbar-nav.ml-auto.nav-link
         - if user_signed_in?
           .dropdown.show
             a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
@@ -26,6 +26,13 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
               = link_to 'Users', cabinet_users_path, class: 'dropdown-item'
               = link_to 'Categories', cabinet_categories_path, class: 'dropdown-item'
               = link_to 'ADS', cabinet_ads_path, class: 'dropdown-item'
+      .navbar-nav.ml-auto.nav-link
+        - if user_signed_in?
+          .nav-item
+            - if current_user.avatar
+              = image_tag current_user.avatar.variant(resize: "40x40!"), class: 'rounded-circle'
+            -else
+              = image_tag gravatar_image_url(current_user.email, size: 40), height: 40, width: 40, class: "rounded-circle"
           .nav-item.nav-link
             | Hello, #{current_user.first_name} #{current_user.last_name}
             | &nbsp;

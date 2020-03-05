@@ -24,6 +24,8 @@ gem 'jquery-rails'
 gem 'rubocop', require: false
 gem 'simple_form'
 gem 'slim-rails'
+gem 'gravatar_image_tag'
+gem "mini_magick"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
