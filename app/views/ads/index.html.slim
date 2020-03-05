@@ -1,0 +1,44 @@
+/ .container
+/   .row
+/     .col-3
+/       .container.p-3.my-3.border
+/         .container
+/           h1 Left sidebar
+/     .col-9
+/       .container.p-3.my-3.border
+/         .container
+/           h1 Listing ADS
+/           table.table.table-hover.table-responsive
+/             tr
+/               th Name
+/               th Description
+/               th
+/               th
+/               th
+/               - @ads.each do |ad|
+/                 tr
+/                   td= ad.name
+/                   td= ad.description
+/                   td= link_to 'Show', ad_path(ad)
+
+
+.container
+  .row
+    .col-3
+      .container.p-3.my-3.border
+        .container
+          h1 Left sidebar
+    .col-9
+      .container.p-3.my-3.border
+        - @ads.each do |ad|
+          .card
+            .card-body
+              .row
+                .col-3
+                  img.card-img-top alt=("Card image cap") src="https://via.placeholder.com/300.png"
+                .col-9
+                  h5.card-title
+                    = link_to "#{ad.name}", ad_path(ad)
+                  p.card-text
+                    = ad.description
+          br

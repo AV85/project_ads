@@ -1,2 +1,9 @@
 .container
-  h1 Home Page!
+  h1 FREE advertisement
+  .container.p-3.my-3.border
+    .row
+      = render partial: 'partials/category_item', collection: @categories, as: :item
+
+  .container.p-3.my-3.border
+    .row
+      = render partial: 'partials/ad_item', collection: @ads, as: :item

@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-4
+      = render 'cabinet/shared/vertical_nav'
+    .col-8
+      .container.p-3.my-3.border
+        p#notice= notice
+        p
+          = @user.email
+        p
+          = @user.first_name
+          = @user.last_name
+        = link_to 'Back', cabinet_users_path

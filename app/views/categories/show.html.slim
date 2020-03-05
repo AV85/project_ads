@@ -1,0 +1,10 @@
+.container.p-3.my-3.border
+  p#notice= notice
+  p
+    = @category.name
+  p
+    = @category.description
+  p
+    = fa_icon "#{@category.icon}"
+
+  = link_to 'Back', ads_path

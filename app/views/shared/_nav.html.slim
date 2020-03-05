@@ -1,16 +1,31 @@
-nav.navbar.navbar-expand-md.navbar-light.bg-light
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
   .container
-    a.navbar-brand href="#"
-      img alt="CoolBrand" height="28" src="https://via.placeholder.com/150"
+    a.navbar-brand href="/"
+      | FREE ADS
     button.navbar-toggler data-target="#navbarCollapse" data-toggle="collapse" type="button"
       span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse
       .navbar-nav
-        a.nav-item.nav-link.active href="/"  Home
-        a.nav-item.nav-link href="#"  Link 1
-        a.nav-item.nav-link href="#"  Link 2
+        a.nav-item.nav-link.active href="/"
+          = fa_icon "home", text: 'Home'
+        = link_to 'All ADS', ads_path, class: 'nav-item nav-link'
+        .dropdown.show
+          a#dropdownMenuLinkCat.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            | Categories
+          .dropdown-menu aria-labelledby="dropdownMenuLinkCat"
+            = render partial: 'partials/category_nav', collection: @categories, as: :item
+      - if user_signed_in?
+        .navbar-nav.ml-auto
+        = link_to 'Create FREE AD', new_cabinet_ad_path, class: 'btn btn-warning', style: 'font-size: 22px'
       .navbar-nav.ml-auto
         - if user_signed_in?
+          .dropdown.show
+            a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              | My cabinet
+            .dropdown-menu aria-labelledby="dropdownMenuLink"
+              = link_to 'Users', cabinet_users_path, class: 'dropdown-item'
+              = link_to 'Categories', cabinet_categories_path, class: 'dropdown-item'
+              = link_to 'ADS', cabinet_ads_path, class: 'dropdown-item'
           .nav-item.nav-link
             | Hello, #{current_user.first_name} #{current_user.last_name}
             | &nbsp;

@@ -1,0 +1,23 @@
+.container.p-3.my-3.border
+  p#notice= notice
+  .row.justify-content-md-center
+    .col-8
+      .card
+        .card-body
+          p.created-at-date
+            = @ad.created_at.to_date
+            br
+            = @ad.user.email
+            br
+            = "Author: #{@ad.user.first_name}" + " " + "#{@ad.user.last_name}"
+          h5.card-title
+            = link_to "#{@ad.name}", ad_path(@ad)
+          p
+            img.card-img-top alt=("Card image cap") src="https://via.placeholder.com/300.png"
+          p.card-text
+            = @ad.description
+      br
+  = link_to 'Back', ads_path, class: 'btn btn-primary'
+
+
+
