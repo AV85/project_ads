@@ -10,8 +10,13 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
           = fa_icon "home", text: 'Home'
         - if user_signed_in?
           = link_to 'ADS', ads_path, class: 'nav-item nav-link'
-          / a.nav-item.nav-link href="#"  Link 1
-          / a.nav-item.nav-link href="#"  Link 2
+          .dropdown.show
+            a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              | My cabinet
+            .dropdown-menu aria-labelledby="dropdownMenuLink"
+              = link_to 'Users', cabinet_users_path, class: 'dropdown-item'
+              = link_to 'Categories', cabinet_users_path, class: 'dropdown-item'
+              = link_to 'ADS', cabinet_users_path, class: 'dropdown-item'
       .navbar-nav.ml-auto
         - if user_signed_in?
           = link_to 'Create AD', new_ad_path, class: 'btn btn-warning'

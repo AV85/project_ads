@@ -1,9 +1,0 @@
-.container.p-3.my-3.border
-  .form
-  = simple_form_for @user, input_html: { class: 'default_class' } do |f|
-    = f.error_notification
-    = f.input :email
-    = f.input :password
-    = f.input :first_name
-    = f.input :last_name
-    = f.button :submit, class: "btn-primary"
