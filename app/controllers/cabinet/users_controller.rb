@@ -22,10 +22,8 @@ class Cabinet::UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to cabinet_users_path, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,10 +32,8 @@ class Cabinet::UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to cabinet_user_url, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,7 +42,6 @@ class Cabinet::UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to cabinet_users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -57,6 +52,6 @@ class Cabinet::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :role)
   end
 end

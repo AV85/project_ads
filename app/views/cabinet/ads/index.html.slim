@@ -1,0 +1,37 @@
+.container
+  .row
+    .col-4
+      = render 'cabinet/shared/vertical_nav'
+    .col-8
+      .container.p-3.my-3.border
+        .container
+          h1 Listing ADS
+          table.table.table-hover.table-responsive
+            tr
+              th id
+              th Name
+              th Description
+              th Author
+              th Category
+              th Created
+              th
+              th
+              th
+            - @ads.each do |ad|
+              tr
+                td= ad.id
+                td= ad.name
+                td= ad.description
+                td
+                  div = ad.user.email
+                  div
+                    = ad.user.first_name
+                    = ad.user.last_name
+
+                td= ad.category.name
+                td= ad.created_at.to_date
+                td= link_to '', cabinet_ad_path(ad), class: 'fa fa-eye'
+                td= link_to '', edit_cabinet_ad_path(ad), class: 'fa fa-pencil'
+                td= link_to '', cabinet_ad_path(ad), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash'
+
+          = link_to 'Create AD', new_cabinet_ad_path, class: 'btn btn-warning'

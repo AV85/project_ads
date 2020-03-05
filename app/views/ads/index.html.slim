@@ -12,7 +12,3 @@
         td= ad.name
         td= ad.description
         td= link_to 'Show', ad_path(ad)
-        td= link_to 'Edit', edit_ad_path(ad)
-        td= link_to 'Destroy', ad_path(ad), method: :delete, data: {confirm: 'Are you sure?'}
-  br
-  = link_to 'Create AD', new_ad_path, class: 'btn btn-warning'

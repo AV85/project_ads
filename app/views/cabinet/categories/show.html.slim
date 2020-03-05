@@ -6,8 +6,11 @@
       .container.p-3.my-3.border
         p#notice= notice
         p
-          = @user.email
+          = @category.id
         p
-          = @user.first_name
-          = @user.last_name
-        = link_to 'Back', cabinet_users_path
+          = @category.name
+          = @category.description
+        = link_to 'Back', cabinet_categories_path
+
+
+

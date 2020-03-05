@@ -15,11 +15,11 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
               | My cabinet
             .dropdown-menu aria-labelledby="dropdownMenuLink"
               = link_to 'Users', cabinet_users_path, class: 'dropdown-item'
-              = link_to 'Categories', cabinet_users_path, class: 'dropdown-item'
-              = link_to 'ADS', cabinet_users_path, class: 'dropdown-item'
+              = link_to 'Categories', cabinet_categories_path, class: 'dropdown-item'
+              = link_to 'ADS', cabinet_ads_path, class: 'dropdown-item'
       .navbar-nav.ml-auto
         - if user_signed_in?
-          = link_to 'Create AD', new_ad_path, class: 'btn btn-warning'
+          = link_to 'Create AD', new_cabinet_ad_path, class: 'btn btn-warning'
           .nav-item.nav-link
             | Hello, #{current_user.first_name} #{current_user.last_name}
             | &nbsp;

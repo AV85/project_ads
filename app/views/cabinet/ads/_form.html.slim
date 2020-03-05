@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-4
+      = render 'cabinet/shared/vertical_nav'
+    .col-8
+      .container.p-3.my-3.border
+        .form
+        = simple_form_for [:cabinet, @ad] do |f|
+          = f.error_notification
+          = f.input :name
+          = f.input :description
+          = f.input :category_id, collection: Category.all
+          = f.input :user_id, collection: User.all.map { |user| [user.email, user.id, {data: {email: user.email}}] }
+          = f.button :submit, class: "btn-primary"
