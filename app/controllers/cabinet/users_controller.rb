@@ -5,7 +5,8 @@ class Cabinet::UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    @users = User.all
+    @users = User.order(updated_at: :desc).page params[:page]
+    @categories = Category.order(name: :asc).all
   end
 
   def show; end
@@ -52,6 +53,6 @@ class Cabinet::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :role)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :role, :avatar)
   end
 end

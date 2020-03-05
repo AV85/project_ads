@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.order(name: :asc).all
     @ads = Ad.all
   end
 end

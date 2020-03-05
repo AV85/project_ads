@@ -1,30 +1,47 @@
 .container
   .row
-    .col-4
+    .col-3
       = render 'cabinet/shared/vertical_nav'
-    .col-8
+    .col-9
       .container.p-3.my-3.border
         .container
           h1 Listing Users
           table.table.table-hover.table-responsive
             tr
               th id
+              th Avatar
               th Email
               th First name
               th Last name
               th Role
-              th
-              th
+              th User created
               th
             - @users.each do |user|
               tr
-                td= user.id
+                td.grey-small-text
+                  = user.id
+                td
+                  - if user.avatar.attached?
+                    = image_tag user.avatar.variant(resize: "32x32!"), class: 'rounded-circle'
+                  - else
+                    = image_tag gravatar_image_url(user.email, size: 32), height: 32, width: 32, class: "rounded-circle"
                 td= user.email
                 td= user.first_name
                 td= user.last_name
-                td= user.role
-                td= link_to '', cabinet_user_path(user), class: 'fa fa-eye'
-                td= link_to '', edit_cabinet_user_path(user), class: 'fa fa-pencil'
-                td= link_to '', cabinet_user_path(user), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash'
+                - if user.role == 2
+                  td.text-success
+                    = user.role
+                -else
+                  td.text-info
+                    = user.role
+                td.grey-small-text
+                  = user.created_at
+                td
+                  = link_to '', cabinet_user_path(user), class: 'fa fa-eye', style: 'padding: 4px'
+                  = link_to '', edit_cabinet_user_path(user), class: 'fa fa-pencil', style: 'padding: 4px'
+                  = link_to '', cabinet_user_path(user), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash', style: 'padding: 4px'
+
+          p.text-center
+            = paginate @users, theme: 'twitter-bootstrap-4', style: 'text-alight: center'
 
           = link_to 'Create User', new_cabinet_user_path, class: 'btn btn-warning'

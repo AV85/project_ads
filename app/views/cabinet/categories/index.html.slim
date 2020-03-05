@@ -1,28 +1,32 @@
 .container
   .row
-    .col-4
+    .col-3
       = render 'cabinet/shared/vertical_nav'
-    .col-8
+    .col-9
       .container.p-3.my-3.border
         .container
           h1 Listing Categories
           table.table.table-hover.table-responsive
             tr
               th id
+              th icon
               th Name
               th Description
-              th Icon
-              th
-              th
               th
             - @categories.each do |category|
               tr
-                td= category.id
+                td.grey-small-text
+                  = category.id
+                td
+                  = fa_icon "#{category.icon} 2x"
                 td= category.name
                 td= category.description
-                td= category.icon
-                td= link_to '', cabinet_category_path(category), class: 'fa fa-eye'
-                td= link_to '', edit_cabinet_category_path(category), class: 'fa fa-pencil'
-                td= link_to '', cabinet_category_path(category), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash'
+                td
+                  = link_to '', cabinet_category_path(category), class: 'fa fa-eye', style: 'padding: 4px'
+                  = link_to '', edit_cabinet_category_path(category), class: 'fa fa-pencil', style: 'padding: 4px'
+                  = link_to '', cabinet_category_path(category), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash', style: 'padding: 4px'
+
+          p.text-center
+            = paginate @categories, theme: 'twitter-bootstrap-4', style: 'text-alight: center'
 
           = link_to 'Create Categories', new_cabinet_category_path, class: 'btn btn-warning'

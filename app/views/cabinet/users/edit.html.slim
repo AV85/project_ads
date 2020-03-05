@@ -1,1 +1,15 @@
-= render 'form'
+.container
+  .row
+    .col-3
+      = render 'cabinet/shared/vertical_nav'
+    .col-9
+      .container.p-3.my-3.border
+        .form
+        = simple_form_for [:cabinet, @user] do |f|
+          = f.error_notification
+          = f.input :avatar
+          = f.input :email
+          = f.input :first_name
+          = f.input :last_name
+          = f.input :role, include_blank: false
+          = f.button :submit, class: "btn-primary"

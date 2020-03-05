@@ -3,7 +3,8 @@ class Cabinet::AdsController < ApplicationController
   before_action :set_ad, only: %i[show edit update destroy]
 
   def index
-    @ads = Ad.all
+    @ads = Ad.order(updated_at: :desc).page params[:page]
+    @categories = Category.order(name: :asc).all
   end
 
   def show; end
@@ -31,7 +32,7 @@ class Cabinet::AdsController < ApplicationController
   def update
     respond_to do |format|
       if @ad.update(ad_params)
-        format.html { redirect_to cabinet_ad_path, notice: 'AD was successfully updated.' }
+        format.html { redirect_to cabinet_ads_path, notice: 'AD was successfully updated.' }
       else
         format.html { render :edit }
       end

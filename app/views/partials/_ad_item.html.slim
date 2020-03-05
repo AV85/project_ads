@@ -3,7 +3,7 @@
     img.card-img-top alt=("Card image cap") src="https://via.placeholder.com/300.png"
     .card-body
       p.created-at-date
-        = item.created_at.to_date
+        = item.created_at.strftime('%Y-%m-%d %H:%M:%S')
         br
         //| Author: #{item.user.email}
       h5.card-title
