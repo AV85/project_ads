@@ -17,12 +17,16 @@
               th
             - @categories.each do |category|
               tr
-                td= category.id
+                td.grey-small-text
+                  = category.id
                 td= category.name
                 td= category.description
                 td= category.icon
                 td= link_to '', cabinet_category_path(category), class: 'fa fa-eye'
                 td= link_to '', edit_cabinet_category_path(category), class: 'fa fa-pencil'
                 td= link_to '', cabinet_category_path(category), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash'
+
+          p.text-center
+            = paginate @categories, theme: 'twitter-bootstrap-4', style: 'text-alight: center'
 
           = link_to 'Create Categories', new_cabinet_category_path, class: 'btn btn-warning'

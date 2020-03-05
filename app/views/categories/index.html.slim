@@ -2,17 +2,17 @@
   .container.p-3.my-3.border
     .container
       h1 Listing categories
-      table.table
+      table.table.table-responsive
         tr
+          th ID
           th Name
           th Description
           th Name icon of font awensome
           th
-          th
-          th
         - @categories.each do |category|
           tr
+            td= category.id
             td= category.name
             td= category.description
             td= category.icon
-            td= link_to 'Show', category_path(category)
+            td= link_to '', category_path(category), class: 'fa fa-eye'

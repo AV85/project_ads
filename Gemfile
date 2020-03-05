@@ -26,6 +26,9 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'gravatar_image_tag'
 gem "mini_magick"
+gem 'enumerize'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

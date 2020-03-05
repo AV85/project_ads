@@ -3,7 +3,7 @@ class Cabinet::AdsController < ApplicationController
   before_action :set_ad, only: %i[show edit update destroy]
 
   def index
-    @ads = Ad.all
+    @ads = Ad.order(updated_at: :desc).page params[:page]
   end
 
   def show; end

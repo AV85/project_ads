@@ -11,6 +11,13 @@ User.create!(email: 'admin@email.com',
              last_name: 'Doe',
              role: 2)
 
+User.create!(email: 'user@email.com',
+             password: 'password',
+             password_confirmation: 'password',
+             first_name: 'Jane',
+             last_name: 'Smith',
+             role: 1)
+
 category_atrributes = [
     { name: "Real estate", description: "In this area adds about " },
     { name: "Cars", description: "In this area adds about cars" },
