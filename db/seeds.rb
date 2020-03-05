@@ -19,16 +19,16 @@ User.create!(email: 'user@email.com',
              role: 1)
 
 category_atrributes = [
-    { name: "Real estate", description: "In this area adds about " },
-    { name: "Cars", description: "In this area adds about cars" },
-    { name: "Tools", description: "In this area adds about tools" },
-    { name: "Toys", description: "In this area adds about toys " },
-    { name: "Houses", description: "In this area adds about houses" },
+    { name: "Real estate", description: "In this area adds about", icon: "building" },
+    { name: "Cars", description: "In this area adds about cars", icon: "car" },
+    { name: "Tools", description: "In this area adds about tools", icon: "gears" },
+    { name: "Toys", description: "In this area adds about toys", icon: "puzzle-piece" },
+    { name: "Houses", description: "In this area adds about houses", icon: "home" },
     { name: "Business", description: "In this area adds about business" },
-    { name: "Animals", description: "In this area adds about animals" },
+    { name: "Animals", description: "In this area adds about animals", icon: "paw" },
     { name: "Products", description: "In this area adds about products" },
-    { name: "Gifts", description: "In this area adds about gifts" },
-    { name: "Sport", description: "In this area adds about sport" },
+    { name: "Gifts", description: "In this area adds about gifts", icon: "gift" },
+    { name: "Sport", description: "In this area adds about sport", icon: "futbol-o" },
 ]
 
 category_atrributes.each do |attributes|

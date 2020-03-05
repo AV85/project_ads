@@ -2,11 +2,11 @@
 
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.order(name: :asc).all
   end
 
   def show
-    @categories = Category.all
+    @categories = Category.order(name: :asc).all
     @category = Category.find(params[:id])
   end
 end

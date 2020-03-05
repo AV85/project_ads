@@ -3,7 +3,7 @@
 class AdsController < ApplicationController
   def index
     @ads = Ad.all
-    @categories = Category.all
+    @categories = Category.order(name: :asc).all
   end
 
   def show

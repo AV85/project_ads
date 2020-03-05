@@ -3,7 +3,7 @@ class Cabinet::CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
 
   def index
-    @categories = Category.all.page params[:page]
+    @categories = Category.order(name: :asc).page params[:page]
   end
 
   def show; end
@@ -29,7 +29,7 @@ class Cabinet::CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to cabinet_category_path, notice: 'Category was successfully updated.' }
+        format.html { redirect_to cabinet_categories_path, notice: 'Category was successfully updated.' }
       else
         format.html { render :edit }
       end

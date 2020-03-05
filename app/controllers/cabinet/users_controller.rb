@@ -5,7 +5,8 @@ class Cabinet::UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    @users = User.all.page params[:page]
+    @users = User.order(updated_at: :desc).page params[:page]
+    @categories = Category.order(name: :asc).all
   end
 
   def show; end
