@@ -13,7 +13,7 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
           a#dropdownMenuLinkCat.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             | Categories
           .dropdown-menu aria-labelledby="dropdownMenuLinkCat"
-            = render partial: 'partials/category_nav', collection: @categories, as: :item
+            = render partial: 'partials/category_nav', collection: Category.order(name: :asc), as: :item
       - if user_signed_in?
         .navbar-nav.ml-auto
         = link_to 'Create FREE AD', new_cabinet_ad_path, class: 'btn btn-warning', style: 'font-size: 22px'

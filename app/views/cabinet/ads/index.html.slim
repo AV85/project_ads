@@ -11,6 +11,7 @@
               th id
               th Name
               th Description
+              th Images
               th Author
               th Category
               th Last updated
@@ -21,6 +22,13 @@
                   = ad.id
                 td= ad.name
                 td= ad.description
+                td
+                  - if ad.images.attached?
+                    - ad.images.each do |img|
+                      = image_tag img.variant(resize: "36x36!"), class: 'img-thumbnail', style: 'margin: 2px'
+                  -else
+                    span.text-danger
+                      = "no images"
                 td.grey-small-text
                   div = ad.user.email
                   div

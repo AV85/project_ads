@@ -53,6 +53,6 @@ class Cabinet::AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:name, :description, :user_id, :category_id)
+    params.require(:ad).permit(:name, :description, :user_id, :category_id, images: [])
   end
 end

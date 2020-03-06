@@ -5,8 +5,28 @@
     .col-9
       .container.p-3.my-3.border
         p#notice= notice
-        p
-          = @ad.name
-        p
-          = @ad.description
+        .container.p-3.my-3.border
+          span.grey-small-text
+            = "AD number: #{@ad.id}"
+            br
+            = "Author: #{@ad.user.first_name} #{@ad.user.last_name} (#{@ad.user.email})"
+            br
+            = "Created: #{@ad.created_at.strftime(' %d.%m.%Y %H:%M:%S')}"
+            br
+            = "Last update: #{@ad.updated_at.strftime(' %d.%m.%Y %H:%M:%S')}"
+            hr
+          h3
+            span.grey-small-text = "Title: "
+            span = @ad.name
+          h4
+            span.grey-small-text = "Description: "
+            = @ad.description
+          -if @ad.images.attached?
+            hr
+            h4.text-info Attached images:
+            - @ad.images.each do |img|
+              = image_tag img.variant(resize: "200x200"), class: 'img-fluid img-thumbnail', style: 'margin: 4px'
+          - else
+            h4.text-danger Images no attached!
+
         = link_to 'Back', cabinet_ads_path
