@@ -2,7 +2,7 @@
 
 class AdsController < ApplicationController
   def index
-    @ads = Ad.all
+    @ads = Ad.order(updated_at: :desc)
     @categories = Category.order(name: :asc).all
   end
 

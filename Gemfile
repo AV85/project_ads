@@ -29,6 +29,8 @@ gem "mini_magick"
 gem 'enumerize'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'active_storage_drag_and_drop'
+gem 'owlcarousel-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
