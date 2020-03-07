@@ -1,10 +1,35 @@
-.container.p-3.my-3.border
-  p#notice= notice
-  p
-    = @category.name
-  p
-    = @category.description
-  p
-    = fa_icon "#{@category.icon}"
-
-  = link_to 'Back', ads_path
+.container
+  .row
+    .col-3
+      .container.p-3.my-3.border
+        .container
+          h1 Left sidebar
+    .col-9
+      .container.p-3.my-3.border
+        - if @ads.present?
+          - @ads.each do |ad|
+            .card
+              .card-body
+                .row
+                  .col-3
+                    - if ad.images.attached?
+                      = image_tag ad.images.first.variant(resize: "600"), class: 'img-thumbnail', style: 'margin: 4px'
+                    - else
+                      span.text-danger
+                        = image_tag 'no_img.png', class: 'card-img-top', alt: 'no image available'
+                  .col-9
+                    h5.card-title
+                      .created-at-date
+                        = "Category: #{ad.category.name}"
+                      .created-at-date
+                        = "AD Number: #{ad.id}"
+                        hr
+                      = link_to "#{ad.name}", ad_path(ad)
+                    p.card-text
+                      = ad.description
+                    p.created-at-date
+                      = fa_icon "clock-o"
+                      = ad.updated_at.strftime(' %d-%m-%Y %H:%M:%S')
+            br
+        - else
+          h1 Ads in this category NOT FOUND!

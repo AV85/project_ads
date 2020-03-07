@@ -1,6 +1,6 @@
 class Cabinet::AdsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_ad, only: %i[show edit update destroy]
+  before_action :set_ad, only: %i[show edit update destroy send_to_moderator to_ban to_approve to_publish to_archive]
 
   def index
     @ads = Ad.order(updated_at: :desc).page params[:page]
@@ -46,6 +46,42 @@ class Cabinet::AdsController < ApplicationController
     end
   end
 
+  def destroy_img
+    img = ActiveStorage::Attachment.find(params[:id])
+    if img.purge
+      redirect_and_notice
+    end
+  end
+
+  def send_to_moderator
+    @ad.send_to_moderator
+    redirect_and_notice
+  end
+
+  def to_ban
+    @ad.to_ban
+    redirect_and_notice
+  end
+
+  def to_approve
+    @ad.to_approve
+    redirect_and_notice
+  end
+
+  def to_publish
+    @ad.publish
+    redirect_and_notice
+  end
+
+  def to_archive
+    @ad.to_archive
+    redirect_and_notice
+  end
+
+  def redirect_and_notice
+    redirect_to cabinet_ads_path, notice: 'STATE was successfully updated.'
+  end
+
   private
 
   def set_ad
@@ -53,6 +89,6 @@ class Cabinet::AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:name, :description, :user_id, :category_id)
+    params.require(:ad).permit(:name, :description, :user_id, :category_id, images: [])
   end
 end

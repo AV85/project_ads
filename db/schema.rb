@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_154329) do
   create_table "ads", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "description", default: "", null: false
+    t.string "state", default: "draft", null: false
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false

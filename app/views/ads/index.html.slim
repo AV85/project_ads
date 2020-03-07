@@ -11,11 +11,18 @@
             .card-body
               .row
                 .col-3
-                  img.card-img-top alt=("Card image cap") src="https://via.placeholder.com/250.png"
+                  - if ad.images.attached?
+                    = image_tag ad.images.first.variant(resize: "600"), class: 'img-thumbnail', style: 'margin: 4px'
+                  - else
+                    span.text-danger
+                      = image_tag 'no_img.png', class: 'card-img-top', alt: 'no image available'
                 .col-9
                   h5.card-title
-                    p.created-at-date
+                    .created-at-date
+                      = "Category: #{ad.category.name}"
+                    .created-at-date
                       = "AD Number: #{ad.id}"
+                      hr
                     = link_to "#{ad.name}", ad_path(ad)
                   p.card-text
                     = ad.description

@@ -1,7 +1,7 @@
 .container.p-3.my-3.border
   p#notice= notice
-  .row.justify-content-md-center
-    .col-8
+  .row
+    .col-9
       .card
         .card-body
           p.created-at-date
@@ -11,14 +11,23 @@
             br
             = fa_icon "clock-o"
             = @ad.created_at.strftime(' %d-%m-%Y %H:%M:%S')
+          hr
           h5.card-title
             = @ad.name
-          p
-            img.card-img-top alt=("Card image cap") src="https://via.placeholder.com/300.png"
-          p.card-text
+          hr
+          .owl-carousel.owl-theme.owl-loaded.owl-drag
+            - if @ad.images.attached?
+              - @ad.images.each do |img|
+                = image_tag img.variant(resize: "600"), class: 'img-fluid img-thumbnail'
+            - else
+              = image_tag 'no_img.png', class: 'card-img-top', alt: 'no image available'
+          .card-text
+            hr
             = @ad.description
+            hr
       br
+    .col-3
+      .card
+        .card-body
+          h1 Right Sidebar
   = link_to 'Back', ads_path, class: 'btn btn-primary'
-
-
-

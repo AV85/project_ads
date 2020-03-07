@@ -1,14 +1,17 @@
-.container
-  .row
-    .col-3
-      = render 'cabinet/shared/vertical_nav'
-    .col-9
-      .container.p-3.my-3.border
-        .form
-        = simple_form_for [:cabinet, @ad] do |f|
-          = f.error_notification
-          = f.input :name
-          = f.input :description
-          = f.input :category_id, collection: Category.all
-          = f.input :user_id, collection: User.all.map { |user| [user.email, user.id, {data: {email: user.email}}] }
-          = f.button :submit, class: "btn-primary"
+.form
+  = simple_form_for [:cabinet, @ad] do |f|
+    = f.error_notification
+    = f.input :name
+    = f.input :description
+    = f.drag_and_drop_file_field :images, nil, size_limit: 5_000_000
+    = f.input :category_id, collection: Category.all, include_blank: false
+    = f.input :user_id, collection: User.all.map { |user| [user.email, user.id, {data: {email: user.email}}] }, include_blank: false
+    = f.button :submit, class: "btn-primary"
+  - if @ad.images.attached?
+    hr
+    h4.text-info Attached images:
+    .row
+      - @ad.images.each do |img|
+        .col-3.text-center
+          = image_tag img.variant(resize: "200x200"), class: 'img-fluid img-thumbnail', style: 'margin: 4px'
+          = link_to '', cabinet_path(img), data: {confirm: 'Are you sure?'}, class: 'fa fa-trash', style: 'font-size: 18px'

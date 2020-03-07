@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery3
+//= require jquery
 //= require bootstrap-sprockets
+//= require active_storage_drag_and_drop
+//= require owl.carousel
 //= require_tree .

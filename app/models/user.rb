@@ -14,4 +14,9 @@ class User < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
 
   validates :email, :first_name, :last_name, presence: true
+
+  def admin?
+    role == 2
+  end
+
 end

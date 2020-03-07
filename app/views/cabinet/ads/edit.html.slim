@@ -1,1 +1,10 @@
-= render 'form'
+.container
+  .row
+    .col-3
+      = render 'cabinet/shared/vertical_nav'
+    .col-9
+      .container.p-3.my-3.border
+        - if @ad.state == 'draft'
+          h1
+            = link_to 'SEND TO MODERATE', cabinet_to_mod_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-warning send-to-mod'
+        = render 'form'
