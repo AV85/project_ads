@@ -6,9 +6,10 @@
       .container.p-3.my-3.border
         .container
           h1 Listing ADS
-          table.table.table-hover.table-responsive
+          table.table.table-hover.table-responsive.ads-listing
             tr
               th id
+              th State
               th Name
               th Description
               th Images
@@ -20,6 +21,19 @@
               tr
                 td.grey-small-text
                   = ad.id
+                td
+                  - if ad.state == 'draft'
+                    span.state.state-draft = ad.state
+                  - if ad.state == 'new'
+                    span.state.state-new = ad.state
+                  - if ad.state == 'rejected'
+                    span.state.state-banned = ad.state
+                  - if ad.state == 'approved'
+                    span.state.state-approved = ad.state
+                  - if ad.state == 'published'
+                    span.state.state-published = ad.state
+                  - if ad.state == 'archival'
+                    span.state.state-archival = ad.state
                 td= ad.name
                 td= ad.description
                 td
@@ -27,13 +41,13 @@
                     - ad.images.each do |img|
                       = image_tag img.variant(resize: "36x36!"), class: 'img-thumbnail', style: 'margin: 2px'
                   -else
-                    span.text-danger
+                    span.text-danger.small-text
                       = "no images"
                 td.grey-small-text
                   div = ad.user.email
                   div
                     = "#{ad.user.first_name} #{ad.user.last_name} "
-                td
+                td.grey-small-text
                   - if ad.category
                     = ad.category.name
                   -else

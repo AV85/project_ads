@@ -1,9 +1,11 @@
 .col-3
   .card
     - if item.images.attached?
-      = image_tag item.images.first.variant(resize: "600"), class: 'img-thumbnail', style: 'margin: 4px'
+      = link_to ad_path(item), style: 'padding: 6px'
+        = image_tag item.images.first.variant(resize: "600"), class: 'img-thumbnail'
     - else
-      = image_tag 'no_img.png', class: 'img-thumbnail', alt: 'no image available',  style: 'margin: 4px'
+      = link_to ad_path(item), style: 'padding: 6px'
+        = image_tag 'no_img.png', class: 'img-thumbnail', alt: 'no image available'
     .card-body
       = link_to "#{item.category.name}", category_path(item.category), class: "grey-small-text", style: "border: 1px solid #999; padding: 4px; border-radius: 4px"
       hr

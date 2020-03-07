@@ -6,7 +6,23 @@
       .container.p-3.my-3.border
         p#notice= notice
         .container.p-3.my-3.border
+          - if @ad.state == 'draft'
+            h1
+              = link_to 'SEND TO MODERATE', cabinet_to_mod_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-warning send-to-mod'
+          - if @ad.state == 'new'
+            h1
+              = link_to 'TO BAN', cabinet_to_ban_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-danger send-to-mod'
+              = " or "
+              = link_to 'TO APPROVE', cabinet_to_approve_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-success send-to-mod'
+          - if @ad.state == 'approved'
+            h1
+              = link_to 'TO PUBLISH', cabinet_to_publish_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-success send-to-mod'
+          - if @ad.state == 'published'
+            h1
+              = link_to 'TO ARCHIVE', cabinet_to_archive_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-info send-to-mod'
           span.grey-small-text
+            = "State: #{@ad.state}"
+            br
             = "AD number: #{@ad.id}"
             br
             = "Author: #{@ad.user.first_name} #{@ad.user.last_name} (#{@ad.user.email})"
