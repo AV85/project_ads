@@ -4,7 +4,12 @@ class Ad < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many_attached :images
+
   validates :name, :description, :category_id, presence: true
+
+  scope :published, -> { where(state: 'published') }
+  scope :not_draft, -> { where.not(state: 'draft') }
+
 
   state_machine :initial => :draft do
 

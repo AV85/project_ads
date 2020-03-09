@@ -13,10 +13,12 @@
                 .row
                   .col-3
                     - if ad.images.attached?
-                      = image_tag ad.images.first.variant(resize: "600"), class: 'img-thumbnail', style: 'margin: 4px'
+                      = link_to ad_path(ad)
+                        = image_tag ad.images.first.variant(resize: "600"), class: 'img-thumbnail', style: 'margin: 4px'
                     - else
                       span.text-danger
-                        = image_tag 'no_img.png', class: 'card-img-top', alt: 'no image available'
+                        = link_to ad_path(ad)
+                          = image_tag 'no_img.png', class: 'card-img-top', alt: 'no image available'
                   .col-9
                     h5.card-title
                       .created-at-date

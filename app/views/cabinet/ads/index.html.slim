@@ -34,8 +34,8 @@
                     span.state.state-published = ad.state
                   - if ad.state == 'archival'
                     span.state.state-archival = ad.state
-                td= ad.name
-                td= ad.description
+                td.small-text = ad.name
+                td.small-text = ad.description
                 td
                   - if ad.images.attached?
                     - ad.images.each do |img|
@@ -63,4 +63,4 @@
           p.text-center
             = paginate @ads, theme: 'twitter-bootstrap-4', style: 'text-alight: center'
 
-          = link_to 'Create AD', new_cabinet_ad_path, class: 'btn btn-warning'
+          = link_to 'Create AD', new_cabinet_ad_path, class: 'btn btn-warning' if current_user.user?

@@ -9,15 +9,15 @@
           - if @ad.state == 'draft'
             h1
               = link_to 'SEND TO MODERATE', cabinet_to_mod_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-warning send-to-mod'
-          - if @ad.state == 'new'
+          - if @ad.state == 'new' && current_user.admin?
             h1
               = link_to 'TO BAN', cabinet_to_ban_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-danger send-to-mod'
               = " or "
               = link_to 'TO APPROVE', cabinet_to_approve_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-success send-to-mod'
-          - if @ad.state == 'approved'
+          - if @ad.state == 'approved' && current_user.admin?
             h1
               = link_to 'TO PUBLISH', cabinet_to_publish_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-success send-to-mod'
-          - if @ad.state == 'published'
+          - if @ad.state == 'published' && current_user.admin?
             h1
               = link_to 'TO ARCHIVE', cabinet_to_archive_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-info send-to-mod'
           span.grey-small-text
@@ -30,16 +30,17 @@
             = "Created: #{@ad.created_at.strftime(' %d.%m.%Y %H:%M:%S')}"
             br
             = "Last update: #{@ad.updated_at.strftime(' %d.%m.%Y %H:%M:%S')}"
-            hr
+          hr
           h3
-            span.grey-small-text = "Title: "
-            span = @ad.name
+            p.grey-small-text = "Title: "
+            p = @ad.name
+          hr
           h4
-            span.grey-small-text = "Description: "
+            p.grey-small-text = "Description: "
             = @ad.description
           -if @ad.images.attached?
             hr
-            h4.text-info Attached images:
+            h4.grey-small-text Attached images:
             - @ad.images.each do |img|
               = image_tag img.variant(resize: "200x200"), class: 'img-fluid img-thumbnail', style: 'margin: 4px'
           - else
