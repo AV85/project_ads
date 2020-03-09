@@ -33,6 +33,7 @@ gem 'active_storage_drag_and_drop'
 gem 'owlcarousel-rails'
 gem 'cancancan'
 gem 'state_machines-activerecord'
+gem 'ffaker'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

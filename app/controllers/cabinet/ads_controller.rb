@@ -1,10 +1,15 @@
 class Cabinet::AdsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_ad, only: %i[show edit update destroy send_to_moderator to_ban to_approve to_publish to_archive]
+  load_and_authorize_resource
 
   def index
-    @ads = Ad.order(updated_at: :desc).page params[:page]
-    @categories = Category.order(name: :asc).all
+    if current_user.admin?
+      @ads = Ad.not_draft.order(updated_at: :desc).page params[:page]
+    else
+      @ads = Ad.where(user_id: current_user.id).order(updated_at: :desc).page params[:page]
+    end
+    @categories = Category.order(name: :asc)
   end
 
   def show; end

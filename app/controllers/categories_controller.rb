@@ -2,12 +2,12 @@
 
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.order(name: :asc).all
+    @categories = Category.order(name: :asc)
   end
 
   def show
-    @categories = Category.order(name: :asc).all
+    @categories = Category.order(name: :asc)
     @category = Category.find(params[:id])
-    @ads = Ad.order(updated_at: :desc).where(category_id: params[:id])
+    @ads = Ad.order(updated_at: :desc).where(category_id: params[:id]).published
   end
 end

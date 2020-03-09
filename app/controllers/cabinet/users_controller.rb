@@ -3,9 +3,14 @@
 class Cabinet::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[show edit update destroy]
+  load_and_authorize_resource
 
   def index
-    @users = User.order(updated_at: :desc).page params[:page]
+    if current_user.admin?
+      @users = User.order(updated_at: :desc).page params[:page]
+    else
+      @users = User.where(id: current_user.id).order(updated_at: :desc).page params[:page]
+    end
     @categories = Category.order(name: :asc).all
   end
 

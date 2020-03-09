@@ -19,4 +19,8 @@ class User < ApplicationRecord
     role == 2
   end
 
+  def user?
+    role == 1
+  end
+
 end

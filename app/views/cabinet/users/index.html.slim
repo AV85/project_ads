@@ -5,7 +5,10 @@
     .col-9
       .container.p-3.my-3.border
         .container
-          h1 Listing Users
+          - if current_user.admin?
+            h1 Listing Users
+          - else
+            h1 My profile
           table.table.table-hover.table-responsive
             tr
               th id
@@ -39,9 +42,12 @@
                 td
                   = link_to '', cabinet_user_path(user), class: 'fa fa-eye', style: 'padding: 4px'
                   = link_to '', edit_cabinet_user_path(user), class: 'fa fa-pencil', style: 'padding: 4px'
-                  = link_to '', cabinet_user_path(user), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash', style: 'padding: 4px'
+                  - if current_user.admin?
+                    = link_to '', cabinet_user_path(user), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash', style: 'padding: 4px; color: red'
+                  -else
+                    = link_to 'DESTROY MY ACCOUNT!', cabinet_user_path(user), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger', style: 'padding: 4px'
 
           p.text-center
             = paginate @users, theme: 'twitter-bootstrap-4', style: 'text-alight: center'
 
-          = link_to 'Create User', new_cabinet_user_path, class: 'btn btn-warning'
+          = link_to 'Create User', new_cabinet_user_path, class: 'btn btn-warning' if current_user.admin?
