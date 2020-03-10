@@ -83,6 +83,16 @@ class Cabinet::AdsController < ApplicationController
     redirect_and_notice
   end
 
+  def from_rejected_to_draft
+    @ad.from_rejected_to_draft
+    redirect_and_notice
+  end
+
+  def to_draft
+    @ad.to_draft
+    redirect_and_notice
+  end
+
   def redirect_and_notice
     redirect_to cabinet_ads_path, notice: 'STATE was successfully updated.'
   end

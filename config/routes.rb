@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get '/ads/:id/to_approve', to: 'ads#to_approve', as: 'to_approve'
     get '/ads/:id/to_publish', to: 'ads#to_publish', as: 'to_publish'
     get '/ads/:id/to_archive', to: 'ads#to_archive', as: 'to_archive'
+    get '/ads/:id/from_rejected_to_draft', to: 'ads#from_rejected_to_draft', as: 'from_rejected_to_draft'
+    get '/ads/:id/to_draft', to: 'ads#to_draft', as: 'to_draft'
   end
 
 end

@@ -57,7 +57,8 @@
                   = ad.updated_at.strftime('%d-%m-%Y %H:%M:%S')
                 td
                   = link_to '', cabinet_ad_path(ad), class: 'fa fa-eye', style: 'padding: 4px'
-                  = link_to '', edit_cabinet_ad_path(ad), class: 'fa fa-pencil', style: 'padding: 4px'
+                  - unless current_user.user? && ad.state == 'new' || current_user.user? && ad.state == 'approved' || current_user.user? && ad.state == 'published' || current_user.user? && ad.state == 'archival'
+                    = link_to '', edit_cabinet_ad_path(ad), class: 'fa fa-pencil', style: 'padding: 4px'
                   = link_to '', cabinet_ad_path(ad), method: :delete, data: {confirm: 'Are you sure?'}, class: 'fa fa-trash', style: 'padding: 4px'
 
           p.text-center
