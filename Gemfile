@@ -34,6 +34,7 @@ gem 'owlcarousel-rails'
 gem 'cancancan'
 gem 'state_machines-activerecord'
 gem 'ffaker'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
