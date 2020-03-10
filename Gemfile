@@ -35,6 +35,7 @@ gem 'cancancan'
 gem 'state_machines-activerecord'
 gem 'ffaker'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

@@ -12,6 +12,10 @@ class Ability
     if user.user?
       can :manage, Ad
       can :manage, User
+      cannot :edit, Ad.where(state: 'published')
+      cannot :edit, Ad.where(state: 'new')
+      cannot :edit, Ad.where(state: 'approved')
+      cannot :edit, Ad.where(state: 'archival')
     end
   end
 end
