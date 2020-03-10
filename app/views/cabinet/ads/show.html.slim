@@ -17,7 +17,7 @@
           - if @ad.state == 'approved' && current_user.admin?
             h1
               = link_to 'TO PUBLISH', cabinet_to_publish_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-success send-to-mod'
-          - if @ad.state == 'published' && current_user.admin?
+          - if @ad.state == 'published'
             h1
               = link_to 'TO ARCHIVE', cabinet_to_archive_path(@ad), data: {confirm: 'Are you sure?'}, class: 'btn btn-info send-to-mod'
           - if @ad.state == 'rejected' && current_user.user?

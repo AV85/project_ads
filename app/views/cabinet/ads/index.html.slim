@@ -8,14 +8,14 @@
           h1 Listing ADS
           table.table.table-hover.table-responsive.ads-listing
             tr
-              th id
-              th State
-              th Name
+              th = sort_link(@q, :id)
+              th = sort_link(@q, :state)
+              th = sort_link(@q, :name)
               th Description
               th Images
               th Author
-              th Category
-              th Last updated
+              th = sort_link(@q, :category_id)
+              th = sort_link(@q, :updated_at, 'Last Updated', default_order: :desc)
               th
             - @ads.each do |ad|
               tr

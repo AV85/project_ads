@@ -5,6 +5,7 @@ class Cabinet::CategoriesController < ApplicationController
 
   def index
     @categories = Category.order(name: :asc).page params[:page]
+    @ads = Ad.all
   end
 
   def show; end
