@@ -7,3 +7,4 @@
   .container.p-3.my-3.border
     .row
       = render partial: 'partials/ad_item', collection: @ads, as: :item
+    = paginate @ads, theme: 'twitter-bootstrap-4', style: 'text-alight: center'

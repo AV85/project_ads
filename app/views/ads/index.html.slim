@@ -4,7 +4,10 @@
     .col-3
       .container.p-3.my-3.border
         .container
-          h1 Left sidebar
+          h3 Sort by:
+          p.sort-btn = sort_link(@q, :id, 'Number', remote: true )
+          p.sort-btn = sort_link(@q, :name, 'Name', remote: true  )
+          p.sort-btn = sort_link(@q, :updated_at, 'Date', remote: true )
     .col-9
       .container.p-3.my-3.border
         - @ads.each do |ad|
@@ -33,3 +36,4 @@
                     = fa_icon "clock-o"
                     = ad.updated_at.strftime(' %d-%m-%Y %H:%M:%S')
           br
+        = paginate @ads, theme: 'twitter-bootstrap-4', style: 'text-alight: center'
