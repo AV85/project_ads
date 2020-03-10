@@ -5,9 +5,13 @@ class Cabinet::AdsController < ApplicationController
 
   def index
     if current_user.admin?
-      @ads = Ad.not_draft.order(updated_at: :desc).page params[:page]
+      ads = Ad.not_draft.order(updated_at: :desc).page params[:page]
+      @q = ads.ransack(params[:q])
+      @ads = @q.result(distinct: true)
     else
-      @ads = Ad.where(user_id: current_user.id).order(updated_at: :desc).page params[:page]
+      ads = Ad.where(user_id: current_user.id).order(updated_at: :desc).page params[:page]
+      @q = ads.ransack(params[:q])
+      @ads = @q.result(distinct: true)
     end
     @categories = Category.order(name: :asc)
   end
