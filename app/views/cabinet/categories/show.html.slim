@@ -5,9 +5,7 @@
     .col-9
       .container.p-3.my-3.border
         p#notice= notice
-        p
-          = @category.id
-        p
-          = @category.name
-          = @category.description
+        h1 = fa_icon "#{@category.icon} 4x"
+        h4 = "Category name:  #{@category.name}"
+        h4 = "Description:  #{@category.description}"
         = link_to 'Back', cabinet_categories_path

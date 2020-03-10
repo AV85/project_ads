@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
   def show
     @categories = Category.order(name: :asc)
     @category = Category.find(params[:id])
-    @ads = Ad.order(updated_at: :desc).where(category_id: params[:id]).published
+    ads = Ad.order(updated_at: :desc).where(category_id: params[:id]).published.page params[:page]
+    @q = ads.ransack(params[:q])
+    @ads = @q.result(distinct: true)
   end
 end
