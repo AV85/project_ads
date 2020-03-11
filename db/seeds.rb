@@ -7,6 +7,7 @@ Category.destroy_all
 Ad.destroy_all
 
 User.create!(email: 'admin@email.com',
+             phone: FFaker::PhoneNumberRU.international_phone_number,
              password: 'password',
              password_confirmation: 'password',
              first_name: 'John',
@@ -14,6 +15,7 @@ User.create!(email: 'admin@email.com',
              role: 2)
 
 User.create!(email: 'admin2@email.com',
+             phone: FFaker::PhoneNumberRU.international_phone_number,
              password: 'password',
              password_confirmation: 'password',
              first_name: FFaker::Name.first_name,
@@ -21,6 +23,7 @@ User.create!(email: 'admin2@email.com',
              role: 2)
 
 User.create!(email: 'user@email.com',
+             phone: FFaker::PhoneNumberRU.international_phone_number,
              password: 'password',
              password_confirmation: 'password',
              first_name: FFaker::Name.first_name,
@@ -28,6 +31,7 @@ User.create!(email: 'user@email.com',
              role: 1)
 
 User.create!(email: 'user2@email.com',
+             phone: FFaker::PhoneNumberRU.international_phone_number,
              password: 'password',
              password_confirmation: 'password',
              first_name: FFaker::Name.first_name,
@@ -35,6 +39,7 @@ User.create!(email: 'user2@email.com',
              role: 1)
 
 User.create!(email: 'user3@email.com',
+             phone: FFaker::PhoneNumberRU.international_phone_number,
              password: 'password',
              password_confirmation: 'password',
              first_name: FFaker::Name.first_name,
@@ -76,22 +81,22 @@ tools = Category.find_by_name('Tools')
 toys = Category.find_by_name('Toys')
 
 ad_attributes = [
-    { name: "Good house for sale in New York", description: FFaker::Lorem.paragraph, state: 'published', category_id: houses.id, user_id: user.id },
-    { name: "New house for sale in Paris", description: FFaker::Lorem.paragraph, state: 'published', category_id: houses.id, user_id: user.id },
-    { name: "Cool house for sale in Berlin", description: FFaker::Lorem.paragraph, state: 'published', category_id: houses.id, user_id: admin.id },
-    { name: "Good house for sale in Moscow", description: FFaker::Lorem.paragraph, state: 'published', category_id: houses.id, user_id: user.id },
-    { name: "New car Mercedes for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: cars.id, user_id: admin.id },
-    { name: "New car BMW for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: cars.id, user_id: user.id },
-    { name: "New car BMW 7 for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: cars.id, user_id: user2.id },
-    { name: "New car BMW X5 for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: cars.id, user_id: user3.id },
-    { name: "New car Honda for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: cars.id, user_id: user2.id },
-    { name: "New car Ferrari for sale", description: FFaker::Lorem.paragraph, category_id: cars.id, user_id: user3.id },
-    { name: "New car Toyota for sale", description: FFaker::Lorem.paragraph, category_id: cars.id, user_id: user3.id },
-    { name: "Lemurs for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: animals.id, user_id: user.id },
-    { name: "Puppies for sale", description: FFaker::Lorem.paragraph, category_id: animals.id, user_id: user.id },
-    { name: "Dog for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: animals.id, user_id: user.id },
-    { name: "Gophers for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: animals.id, user_id: user.id },
-    { name: "Cat for sale", description: FFaker::Lorem.paragraph, state: 'published', category_id: animals.id, user_id: user.id }
+    { name: "Good house for sale in New York", description: FFaker::Lorem.paragraph, price: 100000, state: 'published', category_id: houses.id, user_id: user.id },
+    { name: "New house for sale in Paris", description: FFaker::Lorem.paragraph, price: 200000, state: 'published', category_id: houses.id, user_id: user.id },
+    { name: "Cool house for sale in Berlin", description: FFaker::Lorem.paragraph, price: 150000, state: 'published', category_id: houses.id, user_id: admin.id },
+    { name: "Good house for sale in Moscow", description: FFaker::Lorem.paragraph, price: 50000, state: 'published', category_id: houses.id, user_id: user.id },
+    { name: "New car Mercedes for sale", description: FFaker::Lorem.paragraph, price: 20000, state: 'published', category_id: cars.id, user_id: admin.id },
+    { name: "New car BMW for sale", description: FFaker::Lorem.paragraph, price: 10000, state: 'published', category_id: cars.id, user_id: user.id },
+    { name: "New car BMW 7 for sale", description: FFaker::Lorem.paragraph, price: 30000, state: 'published', category_id: cars.id, user_id: user2.id },
+    { name: "New car BMW X5 for sale", description: FFaker::Lorem.paragraph, price: 25000, state: 'published', category_id: cars.id, user_id: user3.id },
+    { name: "New car Honda for sale", description: FFaker::Lorem.paragraph, price: 10000, state: 'published', category_id: cars.id, user_id: user2.id },
+    { name: "New car Ferrari for sale", description: FFaker::Lorem.paragraph, price: 100000, category_id: cars.id, user_id: user3.id },
+    { name: "New car Toyota for sale", description: FFaker::Lorem.paragraph, price: 50000, category_id: cars.id, user_id: user3.id },
+    { name: "Lemurs for sale", description: FFaker::Lorem.paragraph, price: 1000, state: 'published', category_id: animals.id, user_id: user.id },
+    { name: "Puppies for sale", description: FFaker::Lorem.paragraph, price: 100, category_id: animals.id, user_id: user.id },
+    { name: "Dog for sale", description: FFaker::Lorem.paragraph, price: 100, state: 'published', category_id: animals.id, user_id: user.id },
+    { name: "Gophers for sale", description: FFaker::Lorem.paragraph, price: 2000, state: 'published', category_id: animals.id, user_id: user.id },
+    { name: "Cat for sale", description: FFaker::Lorem.paragraph, price: 1000, state: 'published', category_id: animals.id, user_id: user.id }
 ]
 
 ad_attributes.each do |attributes|

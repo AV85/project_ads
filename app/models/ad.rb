@@ -7,6 +7,7 @@ class Ad < ApplicationRecord
 
   validates :name, :description, :category_id, presence: true
 
+  scope :approved, -> { where(state: 'approved') }
   scope :published, -> { where(state: 'published') }
   scope :not_draft, -> { where.not(state: 'draft') }
 

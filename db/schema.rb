@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_154329) do
   create_table "ads", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "description", default: "", null: false
-    t.string "state", default: "draft", null: false
+    t.integer "price", default: 0, null: false
+    t.string "state", null: false
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_154329) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
+    t.string "phone", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
     t.integer "role", default: 1, null: false
