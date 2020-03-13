@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class Cron
   def self.publish_all_approved_ads
     ads = Ad.approved
-    ads.each do |ad|
-      ad.publish
-    end
+    ads.each(&:publish)
   end
 
   def self.ads_to_archive

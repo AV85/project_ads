@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Cabinet::AdsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_ad, only: %i[show edit update destroy send_to_moderator to_ban to_approve to_publish to_archive]
@@ -57,9 +59,7 @@ class Cabinet::AdsController < ApplicationController
 
   def destroy_img
     img = ActiveStorage::Attachment.find(params[:id])
-    if img.purge
-      redirect_and_notice
-    end
+    redirect_and_notice if img.purge
   end
 
   def send_to_moderator
