@@ -14,4 +14,6 @@ Users:
 2. 'admin2@email.com', 'password'  
 3. 'user@email.com', 'password'  
 4. 'user2@email.com', 'password'  
-5. 'user3@email.com', 'password'  
+5. 'user3@email.com', 'password'
+
+DEMO: https://project-ads.herokuapp.com/
