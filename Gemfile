@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines-activerecord'
 gem 'whenever', require: false
+gem 'cloudinary'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
