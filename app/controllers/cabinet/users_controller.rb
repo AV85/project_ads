@@ -6,12 +6,12 @@ class Cabinet::UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if current_user.admin?
-      @users = User.order(updated_at: :desc).page params[:page]
-    else
-      @users = User.where(id: current_user.id).order(updated_at: :desc).page params[:page]
-    end
-    @categories = Category.order(name: :asc).all
+    @users = if current_user.admin?
+               User.order(updated_at: :desc).page params[:page]
+             else
+               User.where(id: current_user.id).order(updated_at: :desc).page params[:page]
+             end
+    @categories = Category.order(name: :asc)
   end
 
   def show; end

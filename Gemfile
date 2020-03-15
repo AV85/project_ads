@@ -15,27 +15,28 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'active_storage_drag_and_drop'
 gem 'bootstrap', '~> 4.4.1'
+gem 'bootstrap4-kaminari-views'
 gem 'cancancan'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'enumerize'
+gem "factory_bot_rails"
+gem 'ffaker'
 gem 'font-awesome-rails'
+gem 'gravatar_image_tag'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'owlcarousel-rails'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'rubocop', require: false
 gem 'simple_form'
 gem 'slim-rails'
-gem 'gravatar_image_tag'
-gem "mini_magick"
-gem 'enumerize'
-gem 'kaminari'
-gem 'bootstrap4-kaminari-views'
-gem 'active_storage_drag_and_drop'
-gem 'owlcarousel-rails'
-gem 'cancancan'
 gem 'state_machines-activerecord'
-gem 'ffaker'
-gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'whenever', require: false
+gem 'cloudinary'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -49,10 +50,11 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 4.0.0.beta'
   gem 'capybara', '>= 2.15'
   gem 'chromedriver-helper'
+  gem 'rspec-rails', '~> 4.0.0.beta'
   gem 'selenium-webdriver'
+  gem "chromedriver-helper"
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

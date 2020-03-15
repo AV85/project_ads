@@ -11,9 +11,7 @@ class Ad < ApplicationRecord
   scope :published, -> { where(state: 'published') }
   scope :not_draft, -> { where.not(state: 'draft') }
 
-
-  state_machine :initial => :draft do
-
+  state_machine initial: :draft do
     state :draft
     state :new
     state :rejected
@@ -22,31 +20,31 @@ class Ad < ApplicationRecord
     state :archival
 
     event :send_to_moderator do
-      transition :draft => :new
+      transition draft: :new
     end
 
     event :to_ban do
-      transition :new => :rejected
+      transition new: :rejected
     end
 
     event :to_approve do
-      transition :new => :approved
+      transition new: :approved
     end
 
     event :publish do
-      transition :approved => :published
+      transition approved: :published
     end
 
     event :to_archive do
-      transition :published => :archival
+      transition published: :archival
     end
 
     event :from_rejected_to_draft do
-      transition :rejected => :draft
+      transition rejected: :draft
     end
 
     event :to_draft do
-      transition :archival => :draft
+      transition archival: :draft
     end
   end
 end
